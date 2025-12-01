@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari - Страсть и Совершенство</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #D40000;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #D40000;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #D40000;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1617654116852-3fd2b7c50195?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            color: white;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: #D40000;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #D40000;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #D40000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #D40000;
+        }
+
+        /* Models Section */
+        .models {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: #D40000;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .model-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .model-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .model-info {
+            padding: 25px;
+        }
+
+        .model-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .model-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* History Section */
+        .history {
+            padding: 100px 0;
+            background-color: #000;
+            color: white;
+        }
+
+        .history .section-title h2 {
+            color: #fff;
+        }
+
+        .history-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .history-text {
+            flex: 1;
+        }
+
+        .history-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .history-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(212, 0, 0, 0.3);
+        }
+
+        .history-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding-right: 20px;
+        }
+
+        .footer-column h3 {
+            color: #D40000;
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: #D40000;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #aaa;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #D40000;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #D40000;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .history-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #000;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .model-card {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-horse-head"></i>
+                    <span class="logo-text">FERRARI</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#models">Модели</a></li>
+                        <li><a href="#history">История</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content fade-in">
+            <h1>Легенда <span>автомобилестроения</span></h1>
+            <p>С 1947 года Ferrari создает самые престижные, мощные и красивые автомобили в мире. Страсть, инновации и итальянское совершенство в каждой детали.</p>
+            <a href="#models" class="btn">Исследовать модели</a>
+        </div>
+    </section>
+
+    <!-- Models Section -->
+    <section class="models" id="models">
+        <div class="container">
+            <div class="section-title">
+                <h2>Легендарные модели</h2>
+                <p>Исследуйте самые знаковые автомобили Ferrari</p>
+            </div>
+            <div class="models-grid">
+                <div class="model-card fade-in">
+                    <img src="https://i.ytimg.com/vi/2qngSE3gip0/maxresdefault.jpg" alt="Ferrari SF90 Stradale" class="model-img">
+                    <div class="model-info">
+                        <h3>SF90 Stradale</h3>
+                        <p>Первый серийный гибридный автомобиль Ferrari с системой полного привода. Оснащен двигателем V8 twin-turbo и тремя электродвигателями.</p>
+                        <a href="#" class="btn">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="model-card fade-in">
+                    <img src="//yastatic.net/naydex/yandex-search/h1aON2698/d2bf5bIG/6mEpcic_PLuvbeK4sd7en-5VoWzpN-q3GCLUQA5VZwl23lI6PKIi6_EPcU7jKGabpWWw_Yy-HbzpPBANWxXD9xvzGpZGre59Xa-AfqNsXA085bWc6Sb_w4lSw2Og" alt="Ferrari 812 Superfast" class="model-img">
+                    <div class="model-info">
+                        <h3>812 Superfast</h3>
+                        <p>Мощный родстер с атмосферным двигателем V12 объемом 6.5 литра, развивающий 800 л.с. Максимальная скорость превышает 340 км/ч.</p>
+                        <a href="#" class="btn">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="model-card fade-in">
+                    <img src="https://vladivostok.autokovrik.ru/common/images/auto/8b7a1d16cbfd86644e6a60e3eb19fca1/22ce5e6df9616196520416c95544bf65.jpeg" alt="Ferrari Portofino" class="model-img">
+                    <div class="model-info">
+                        <h3>Portofino M</h3>
+                        <p>Элегантный GT-автомобиль с откидным жестким верхом. Идеальное сочетание комфорта, производительности и стиля для повседневной езды.</p>
+                        <a href="#" class="btn">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history" id="history">
+        <div class="container">
+            <div class="section-title">
+                <h2>История Ferrari</h2>
+                <p>От гонок к дорожным автомобилям</p>
+            </div>
+            <div class="history-content fade-in">
+                <div class="history-text">
+                    <p>История Ferrari началась в 1939 году, когда Энцо Феррари основал компанию Auto Avio Costruzioni. Первый автомобиль под маркой Ferrari был представлен в 1947 году - это был Ferrari 125 S с 12-цилиндровым двигателем.</p>
+                    <p>Изначально компания создавала гоночные автомобили, и только позже начала производство дорожных версий для финансирования своей гоночной деятельности. Сегодня Ferrari - один из самых узнаваемых брендов в мире, символ роскоши, скорости и итальянского стиля.</p>
+                    <p>Компания продолжает доминировать в Формуле-1, удерживая рекорд по количеству побед в чемпионате конструкторов. Каждый автомобиль Ferrari создается с непревзойденным вниманием к деталям, сочетая передовые технологии с ручной работой мастеров.</p>
+                    <a href="#" class="btn">Читать полную историю</a>
+                </div>
+                <div class="history-img">
+                    <img src="https://cdnn11.img.sputnik.by/img/102805/39/1028053999_303:0:1744:1586_1920x0_80_0_0_3fce05d83f2b879ec07815148e271f19.jpg" alt="История Ferrari">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FERRARI</h3>
+                    <p>Страсть к совершенству с 1947 года. Ferrari создает не просто автомобили, а произведения искусства на колесах, которые олицетворяют итальянское превосходство в дизайне и инженерии.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Быстрые ссылки</h3>
+                    <a href="#home">Главная</a>
+                    <a href="#models">Модели</a>
+                    <a href="#history">История</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Via Abetone Inferiore 4, Маранелло, Италия</p>
+                    <p><i class="fas fa-phone"></i> +7 934 555 22 00</p>
+                    <p><i class="fas fa-envelope"></i> Ferrari1248.gmail.com/p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Ferrari</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
